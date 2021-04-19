@@ -1,0 +1,28 @@
+.mainService {
+  position: relative;
+}
+
+.grid {
+  position: absolute;
+  top: 30px;
+  left: 38px;
+  width: 1px;
+  height: calc(100% - 80px);
+  background-size: 1px 5px;
+  background-image: linear-gradient(
+    180deg,
+    #b2b2b2,
+    #b2b2b2 2px,
+    transparent 0,
+    transparent 5px
+  );
+  background-repeat: repeat-y;
+}
+
+@media screen and (min-width: 879px) {
+  .grid {
+    top: 0;
+    left: 50%;
+    height: 100%;
+  }
+}

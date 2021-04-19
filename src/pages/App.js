@@ -24,9 +24,9 @@ function App() {
     >
       <div>
         <HeadersPage></HeadersPage>
-          <Route path="/" exact component={ContentPage} />
-          <Route path="/contact" component={ContactPage} />
-          <Route path="/intoplu" component={IntoPluPage} />
+        <Route path="/" exact component={ContentPage} />
+        <Route path="/contact" component={ContactPage} />
+        <Route path="/intoplu" component={IntoPluPage} />
       </div>
     </ContextStore.Provider>
   );
