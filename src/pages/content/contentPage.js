@@ -1,10 +1,51 @@
 import React from "react";
 import logo from "../../assets/1200x.webp";
 // import iaplu1 from "../../assets/plu/ia_900000006.png";
-import "../../pages/App.css";
+import "../../pages/App.scss";
 import "./content.scss";
 
 function ContentPage() {
+  const pluitemList = [
+    {
+      img: '001',
+      title: '蔓越莓雪Q餅',
+      description1: '熟成土鳳梨酥、桂圓核桃酥、烏龍梅果酥',
+      description2: '嚴選在地17號金鑽鳳梨 自然生成的有機纖維 內餡香氣醇美不膩'
+    }, {
+      img: '002',
+      title: '抹茶雪Q餅',
+      description1: '熟成土鳳梨酥、桂圓核桃酥、烏龍梅果酥',
+      description2: '嚴選在地17號金鑽鳳梨 自然生成的有機纖維 內餡香氣醇美不膩'
+    },
+    {
+      img: '003',
+      title: '雪Q餅',
+      description1: '熟成土鳳梨酥、桂圓核桃酥、烏龍梅果酥',
+      description2: '嚴選在地17號金鑽鳳梨 自然生成的有機纖維 內餡香氣醇美不膩'
+    },]
+  const ly_pluList = pluitemList.map((item, index) => {
+    return <div key={`lyplu_${index}`} className="row introArea">
+      <div className="textArea">
+        <h4>{item.title}</h4>
+        <h5>{item.description1}</h5>
+        <div className="desc">
+          {item.description2}
+        </div>
+      </div>
+      <div className="imgArea">
+        <div className="style">
+          <img
+            width="880px"
+            height="550px"
+            className="pluimg"
+            src={`asstes/plu/${item.img}.png`}
+            alt="plu1"
+          />
+        </div>
+      </div>
+    </div>
+  })
+
   return (
     <div>
       {/* logo */}
@@ -28,27 +69,7 @@ function ContentPage() {
       <div className="container mainService">
         <div className="grid"></div>
         {/* 1. 第一類型蛋糕 */}
-        <div className="row introArea">
-          <div className="textArea">
-            <img></img>
-            <h4>信手工坊</h4>
-            <h5>熟成土鳳梨酥、桂圓核桃酥、烏龍梅果酥</h5>
-            <div className="desc">
-              嚴選在地17號金鑽鳳梨 自然生成的有機纖維 內餡香氣醇美不膩
-              </div>
-          </div>
-          <div className="imgArea">
-            <div className="style">
-              <img
-                width="880px"
-                height="550px"
-                className="pluimg"
-                src={require('../../assets/plu/301555.jpg')}
-                alt="plu1"
-              />
-            </div>
-          </div>
-        </div>
+        {ly_pluList}
 
         {/* 2. 第二類型蛋糕 */}
         {/* <div className="row introArea">

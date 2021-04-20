@@ -1,38 +1,31 @@
 import React from 'react'
-import './contact.scss'
+import { useForm } from "react-hook-form";
+import "./contact.scss";
 
 function ContactPage() {
 
-  /** 類別按鈕 */
-  const btnList = ['Allprod', '餅乾', '甜點', '中式']
-  const lists = btnList.map((list, index) => { return <li key={`li_${index}`}><button className="productCategory">{list}</button></li> })
+  const { register, handleSubmit } = useForm();
+  const onSubmit = (data) => {
+    console.log(data);
+  }
 
   return (
     <div className="container">
-      <div className="ly_content">
-        <div className="row">
-          <h3 className="col-12">商品總覽</h3>
+      <form className="lyMaincontact" onSubmit={handleSubmit(onSubmit)}>
+        <div className="mb-3">
+          <label htmlFor="exampleFormControlInput1" className="form-label">姓</label>
+          <input  {...register("firstName", { required: true, maxLength: 20 })} type="text" className="form-control" data-id="exampleFormControlInput1" placeholder="呂"></input>
         </div>
-      </div>
-      <div className="productCnt">
-        <div className="productMenuWrap">
-          <ul className="productMenu">
-            {lists}
-          </ul>
+        <div className="mb-3">
+          <label htmlFor="exampleFormControlInput2" className="form-label">名</label>
+          <input {...register("lastName", { pattern: /^[A-Za-z]+$/i })} type="text" className="form-control" data-id="exampleFormControlInput2" placeholder="鳳仙"></input>
         </div>
-        <ul className="productList">
-          <li className="product">
-            <span className="product_content">
-              111111111111
-            </span>
-          </li>
-          <li className="product">
-            <span className="product_content">
-              22222
-            </span>
-          </li>
-        </ul>
-      </div>
+        <div className="mb-3">
+          <label htmlFor="exampleFormControlInput3" className="form-label">年紀</label>
+          <input  {...register("age", { min: 18, max: 99 })} type="number" className="form-control" data-id="exampleFormControlInput3" placeholder="0"></input>
+        </div>
+        <input type="submit" />
+      </form>
     </div>
   )
 }
