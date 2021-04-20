@@ -1,6 +1,6 @@
 import React from "react";
 import logo from "../../assets/1200x.webp";
-import iaplu1 from "../../assets/plu/ia_900000006.png";
+// import iaplu1 from "../../assets/plu/ia_900000006.png";
 import "../../pages/App.css";
 import "./content.scss";
 
@@ -43,7 +43,7 @@ function ContentPage() {
                 width="880px"
                 height="550px"
                 className="pluimg"
-                src={iaplu1}
+                src={require('../../assets/plu/301555.jpg')}
                 alt="plu1"
               />
             </div>
