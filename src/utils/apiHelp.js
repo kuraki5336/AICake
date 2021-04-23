@@ -1,7 +1,15 @@
-import api from "use-http"
+import useFetch from "use-http"
 
-const { get, post, response, loading, error } = useFetch("https://example.com")
+async function post(url, data, setup = { mask: true }) {
+    const { get, post, response, loading, error } = useFetch("https://www.google.com")
+    const config = this.getRequestHeader();
+    const rep = await post(url, data)
+    if (response.ok) {
 
-const post = (url, data, setup = { mask: true }) => {
+    }
+}
+
+
+function succese(params) {
 
 }

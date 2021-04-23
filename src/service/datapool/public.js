@@ -2,6 +2,9 @@ import React from "react";
 
 export const ContextStore = React.createContext({
   headerIndex: 0,
+  setheaderIndex: () => { },
+  openContext: true,
+  setOpenContext: () => { },
 });
 
 export function headerReducer(state, action) {

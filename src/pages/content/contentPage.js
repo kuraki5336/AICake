@@ -50,7 +50,7 @@ function ContentPage() {
     <div>
       {/* logo */}
       <div className="ly_logo">
-        <img className="logoimg" src={logo} />
+        <img alt='' className="logoimg" src={logo} />
         <div className="ly_title">
           <h2>甜甜綿綿蛋糕</h2>
           <h3>蛋糕始終陪伴在你身旁</h3>
