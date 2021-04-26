@@ -1,4 +1,4 @@
-import React, { useReducer, useState } from "react";
+import React, { useReducer, useState, lazy, Suspense } from "react";
 import { Route } from "react-router-dom";
 /** 元件 */
 import HeadersPage from "../components/headersPage";
@@ -11,29 +11,34 @@ import ExamplePage from "./example/Example";
 import { combineDispatchs } from "../utils/common";
 /** datapool  */
 import { ContextStore, headerReducer } from "../service/datapool/public";
+
+/** reducer */
+import { itemStore } from "../model/store";
+import { Provider } from 'react-redux';
+
 /** 第三方套件 */
+
+const LazyPage = lazy(() => import('./lazy/Lazy'));
+const FormPage = () => {
+  return <Suspense fallback={<div>Loading...</div>}>
+    <LazyPage />
+  </Suspense>;
+}
 
 function App() {
   const [headerState, header_dispatch] = useReducer(headerReducer, 0);
   const [isOpen, setIsOpen] = useState(true);
   return (
-    <ContextStore.Provider
-      value={{
-        sHeaders: headerState,
-        dispatch: combineDispatchs([header_dispatch]),
-        openContext: isOpen,
-        setOpenContext: setIsOpen
-      }}
-    >
-      <div>
+    <Provider store={itemStore}>
+      <>
         <HeadersPage></HeadersPage>
-        <p>56789</p>
         <Route path="/" exact component={ContentPage} />
         <Route path="/contact" component={ContactPage} />
         <Route path="/intoplu" component={IntoPluPage} />
         <Route path="/example" component={ExamplePage} />
-      </div>
-    </ContextStore.Provider>
+        <Route path="/lazy" component={FormPage} />
+      </>
+    </Provider >
   );
 }
 

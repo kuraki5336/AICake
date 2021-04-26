@@ -1,35 +1,41 @@
-import React, { useMemo, useRef, useState } from 'react'
+import React, { useMemo, useEffect, useState } from 'react'
 import Menu from '../../components/Menu'
+// import useMouseY from '../../utils/useMouseY';
+import { useSelector, useDispatch } from 'react-redux';
+
 
 function Example() {
-    const arrlist = ['梓晏', '油油', '璇璇0', '媽媽']
+    const dispatch = useDispatch();
+    const arrlist = useSelector(state => {
+        console.log(state);
+        return state.menuItemData
+    });
 
-    const [close, setclose] = useState(false)
+    console.log(arrlist);
+    // dispatch({
+    //     type: "ADD_ITEM",
+    //     payload: { itemNew: "測試資料" }
+    // });
 
-    const test = useMemo(() => {
-        return 'abc'
-    }, [])
-    console.log(test);
-    console.log(
-        arrlist.map((item, index) => {
-            return <li key={index}>{item}</li>
-        }));
+    // const mouseY = useMouseY()
+    // const [close, setclose] = useState(false)
 
-    const arrmap = useMemo(() => {
-        const abc = arrlist.map((item, index) => {
-            return <li key={index}>{item}</li>
-        })
-        console.log(abc);
-        return abc
-    }, [])
-    console.log(arrmap);
+    // const arrmap = useMemo(() => {
+    //     const abc = arrlist.map((item, index) => {
+    //         return <li key={index}>{item}</li>
+    //     })
+    //     return abc
+    // }, [])
+
+    // 滑鼠偵測...
+    // useEffect(() => {
+    //     console.log(mouseY);
+    // }, [mouseY])
 
     return (
         <>
-            <p onClick={console.log()} >123456</p>
-            <Menu title={`我是標題吧 `}>{arrmap}</Menu>
-            <p>654321</p>
-            <button >案看看</button>
+            <Menu>{arrlist}</Menu>
+            <button onClick={() => { dispatch({ type: "CLEAN_ITEM" }) }} >案看看</button>
         </>
     )
 }
