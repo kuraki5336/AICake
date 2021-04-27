@@ -1,4 +1,4 @@
-import React, { useReducer, useState, lazy, Suspense } from "react";
+import React, { lazy, Suspense } from "react";
 import { Route } from "react-router-dom";
 /** 元件 */
 import HeadersPage from "../components/headersPage";
@@ -8,16 +8,13 @@ import ContactPage from "./contact/contactPage";
 import IntoPluPage from "./intoplu/intoPluPage";
 import ExamplePage from "./example/Example";
 /** libfunc */
-import { combineDispatchs } from "../utils/common";
 /** datapool  */
-import { ContextStore, headerReducer } from "../service/datapool/public";
 
 /** reducer */
-import { itemStore } from "../model/store";
+import { store } from "../model/store";
 import { Provider } from 'react-redux';
 
 /** 第三方套件 */
-
 const LazyPage = lazy(() => import('./lazy/Lazy'));
 const FormPage = () => {
   return <Suspense fallback={<div>Loading...</div>}>
@@ -26,10 +23,8 @@ const FormPage = () => {
 }
 
 function App() {
-  const [headerState, header_dispatch] = useReducer(headerReducer, 0);
-  const [isOpen, setIsOpen] = useState(true);
   return (
-    <Provider store={itemStore}>
+    <Provider store={store}>
       <>
         <HeadersPage></HeadersPage>
         <Route path="/" exact component={ContentPage} />

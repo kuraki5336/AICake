@@ -2,14 +2,22 @@ import React from "react";
 import Paper from "@material-ui/core/Paper";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
-import { ContextStore } from "../service/datapool/public";
-import { useHistory } from "react-router-dom";
+import { useSelector, useDispatch } from 'react-redux';
+import { useHistory } from "react-router";
 
 function HeadersPage() {
-  const { sHeaders, dispatch } = React.useContext(ContextStore);
   let history = useHistory();
+  const dispatch = useDispatch();
+  const $header = useSelector(state => {
+    return state.storeHeader
+  });
 
   const onTabChange = (event, newValue) => {
+    dispatch({
+      type: 'change',
+      payload: newValue
+    });
+
     switch (newValue) {
       case 0:
         history.push("/");
@@ -26,15 +34,13 @@ function HeadersPage() {
       default:
         break;
     }
-
-    dispatch({ type: "onheaderChange", index: newValue });
   };
 
   return (
     <div>
       <Paper square>
         <Tabs
-          value={sHeaders}
+          value={$header.stateidnex}
           indicatorColor="primary"
           textColor="primary"
           onChange={onTabChange}
