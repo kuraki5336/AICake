@@ -1,17 +1,17 @@
-import React from 'react'
+import React, { useMemo } from 'react'
 import Menu from '../../components/Menu'
 // import useMouseY from '../../utils/useMouseY';
 import { useSelector, useDispatch } from 'react-redux';
-
+// css
+import { aoao } from './style';
 
 function Example() {
     const dispatch = useDispatch();
     const arrlist = useSelector(state => {
         console.log(state);
-        return state.menuItemData
+        return state.commonReducer.menuItemData
     });
 
-    console.log(arrlist);
     // dispatch({
     //     type: "ADD_ITEM",
     //     payload: { itemNew: "測試資料" }
@@ -20,12 +20,12 @@ function Example() {
     // const mouseY = useMouseY()
     // const [close, setclose] = useState(false)
 
-    // const arrmap = useMemo(() => {
-    //     const abc = arrlist.map((item, index) => {
-    //         return <li key={index}>{item}</li>
-    //     })
-    //     return abc
-    // }, [])
+    const arrmap = useMemo(() => {
+        const abc = arrlist.map((item, index) => {
+            return <li key={index}>{item}</li>
+        })
+        return abc
+    }, [])
 
     // 滑鼠偵測...
     // useEffect(() => {
@@ -34,7 +34,8 @@ function Example() {
 
     return (
         <>
-            <Menu>{arrlist}</Menu>
+
+            <aoao><Menu>{arrmap}</Menu></aoao>
             <button onClick={() => { dispatch({ type: "CLEAN_ITEM" }) }} >案看看</button>
         </>
     )
