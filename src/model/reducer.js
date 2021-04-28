@@ -9,6 +9,7 @@ const initState = {
 
 const ADD_ITEM = 'ADD_ITEM';
 const CLEAN_ITEM = 'CLEAN_ITEM';
+const SET_ITEM = 'SET_ITEM';
 
 const itemReducer = (state = initState, action) => {
 
@@ -19,6 +20,9 @@ const itemReducer = (state = initState, action) => {
         }
         case CLEAN_ITEM: {
             return { menuItemData: [] };
+        }
+        case SET_ITEM: {
+            return { menuItemData: action.payload.itemNewArr };
         }
         default:
             return state;

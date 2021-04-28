@@ -1,9 +1,6 @@
 import React, { useContext, useState } from 'react'
 import Test from "./test"
 
-
-
-
 function Menu({ title, children }) {
     const [count, setCount] = useState(0)
     const [close, setClose] = useState(false)

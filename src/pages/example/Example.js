@@ -3,7 +3,9 @@ import Menu from '../../components/Menu'
 // import useMouseY from '../../utils/useMouseY';
 import { useSelector, useDispatch } from 'react-redux';
 // css
-import { aoao } from './style';
+import { Aoao } from './style';
+import { fetchCityItem } from '../../model/publicService';
+
 
 function Example() {
     const dispatch = useDispatch();
@@ -34,9 +36,9 @@ function Example() {
 
     return (
         <>
-
-            <aoao><Menu>{arrmap}</Menu></aoao>
+            <Aoao><Menu>{arrmap}</Menu></Aoao>
             <button onClick={() => { dispatch({ type: "CLEAN_ITEM" }) }} >案看看</button>
+            <button onClick={() => { dispatch(fetchCityItem()) }} >查詢API</button>
         </>
     )
 }
